@@ -2,14 +2,19 @@
 
 @baseUrl=http://127.0.0.1:5000
 
-GET {{baseUrl}}
 
 ###
-
 GET {{baseUrl}}/orders
-
 ###
+POST {{baseUrl}}/orders
+Content-Type: application/json
 
+{ 
+    "testkey": "Test value"
+}
+###
+GET {{baseUrl}}/services
+###
 POST {{baseUrl}}/orders
 Content-Type: application/json
 
