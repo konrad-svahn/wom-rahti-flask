@@ -16,6 +16,8 @@
 - The `.devcontainer` folder is a VSCode thing, not needed for Rahti. 
 
 https://p2-svahnkon.rahtiapp.fi/
+pip install -m requirements.txt
+https://medium.com/analytics-vidhya/flask-development-part-3-file-structure-68e3bf2f6642
 
 
 

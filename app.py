@@ -22,24 +22,24 @@ class User(db.Model):
 #with app.app_context():
 #    db.create_all()
 
-@app.route("/", methods=['GET', 'POST'])
-def index():
+@app.route('/orders', methods=['GET', 'POST', 'PATCH', 'DELETE'])
+def order():
     if request.method == 'GET':
-        return { 
+        return {
             'method': request.method,
-            'msg': 'webhoks work', 
-            'env': os.environ.get('ENV_VAR', 'Cannot find variable ENV_VAR') 
+            'msg': 'webhoks work',
+            'env': os.environ.get('ENV_VAR', 'Cannot find variable ENV_VAR')
         }
 
     if request.method == 'POST':
         body = request.get_json()
         return {
-            'msg': 'POST', 
-            'request_body': body 
+            'msg': 'POST',
+            'request_body': body
         }
 
-@app.route("/users", methods=['GET', 'POST'])
-def indexusers():
+@app.route('/services', methods=['GET', 'POST', 'PATCH', 'DELETE'])
+def service():
     if request.method == 'GET':
         users = []
         for user in User.query.all():
@@ -57,5 +57,5 @@ def indexusers():
         db.session.commit()
         return { 'msg': 'User created', 'id': new_user.id}
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run(debug=True, port=8080, host='0.0.0.0')

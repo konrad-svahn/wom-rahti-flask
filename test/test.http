@@ -6,11 +6,11 @@ GET {{baseUrl}}
 
 ###
 
-GET {{baseUrl}}/test-route
+GET {{baseUrl}}/orders
 
 ###
 
-POST {{baseUrl}}/test-route
+POST {{baseUrl}}/orders
 Content-Type: application/json
 
 { 
