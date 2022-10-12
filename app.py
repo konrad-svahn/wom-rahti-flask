@@ -11,7 +11,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DB_URL')
 
 db = SQLAlchemy()
-#db.init_app(app)
+db.init_app(app)
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
