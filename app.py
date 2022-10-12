@@ -22,6 +22,22 @@ class User(db.Model):
 #with app.app_context():
 #    db.create_all()
 
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    if request.method == 'GET':
+        return {
+            'method': request.method,
+            'msg': 'webhoks work',
+            'env': os.environ.get('ENV_VAR', 'Cannot find variable ENV_VAR')
+        }
+
+    if request.method == 'POST':
+        body = request.get_json()
+        return {
+            'msg': 'POST',
+            'request_body': body
+        }
+
 @app.route('/orders', methods=['GET', 'POST', 'PATCH', 'DELETE'])
 def order():
     if request.method == 'GET':
