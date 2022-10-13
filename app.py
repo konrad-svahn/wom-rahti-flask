@@ -41,13 +41,6 @@ def index():
             'env': os.environ.get('ENV_VAR', 'Cannot find variable ENV_VAR')
         }
 
-    if request.method == 'POST':
-        body = request.get_json()
-        return {
-            'msg': 'POST',
-            'request_body': body
-        }
-
 @app.route('/orders', methods=['GET', 'POST', 'PATCH', 'DELETE'])
 def order():
     if request.method == 'GET':
@@ -64,25 +57,40 @@ def order():
             'request_body': body
         }
 
-@app.route('/services', methods=['GET', 'POST', 'PATCH', 'DELETE'])
+@app.route('/services', methods=['GET', 'POST'])
 def service():
     if request.method == 'GET':
         services = []
-        for service in Service.query.all():
+        for serv in Service.query.all():
             services.append({
-                'id': service.id,
-                'name': service.name,
-                'cotage': service.cottage,
-                'hourly cost': service.hourly_cost
+                'id': serv.id,
+                'name': serv.name,
+                'cottage': serv.cottage,
+                'hourly cost': serv.hourly_cost
             })
         return services
 
     if request.method == 'POST':
         body = request.get_json()
-        new_service = Service(name=body['name'])
+        new_service = Service(
+            name=body['name'],
+            cottage=body['cottage'],
+            hourly_cost=body['hourly_cost']
+        )
         db.session.add(new_service)
         db.session.commit()
         return { 'msg': 'service created', 'id': new_service.id}
+
+@app.route("/services/<int:id>", methods=['PATCH', 'DELETE'])
+def serviceid(id):
+    serv = db.get_or_404(Service, id)
+
+    if request.method == "DELETE":
+        db.session.delete(serv)
+        db.session.commit()
+        return { 'msg': 'service created', 'id': serv}
+
+    
 
 if __name__ == '__main__':
     app.run(debug=True, port=8080, host='0.0.0.0')

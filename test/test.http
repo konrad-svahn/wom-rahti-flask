@@ -20,5 +20,7 @@ POST {{baseUrl}}/orders
 Content-Type: application/json
 
 { 
-    "name": "Test value"
+    "name": "Test value",
+    "cottage": "cottage",
+    "hourly_cost": 50
 }
