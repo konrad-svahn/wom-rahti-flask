@@ -20,5 +20,5 @@ POST {{baseUrl}}/orders
 Content-Type: application/json
 
 { 
-    "testkey": "Test value"
+    "name": "Test value"
 }
