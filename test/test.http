@@ -11,12 +11,14 @@ POST {{baseUrl}}/orders
 Content-Type: application/json
 
 { 
-    "testkey": "Test value"
+    "service": "Test value",
+    "cottage": "cottage",
+    "duration": 60
 }
 ###
 GET {{baseUrl}}/services
 ###
-POST {{baseUrl}}/orders
+POST {{baseUrl}}/services
 Content-Type: application/json
 
 { 

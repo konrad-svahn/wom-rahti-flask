@@ -42,20 +42,28 @@ def index():
         }
 
 @app.route('/orders', methods=['GET', 'POST', 'PATCH', 'DELETE'])
-def order():
+def order():        
     if request.method == 'GET':
-        return {
-            'method': request.method,
-            'msg': 'webhoks work',
-            'env': os.environ.get('ENV_VAR', 'Cannot find variable ENV_VAR')
-        }
-
+        orders = []
+        for orde in Order.query.all():
+            orders.append({
+                'id': orde.id,
+                'service': orde.service,
+                'cottage': orde.cottage,
+                'duration': orde.duration
+            })
+        return orders
+        
     if request.method == 'POST':
         body = request.get_json()
-        return {
-            'msg': 'POST',
-            'request_body': body
-        }
+        new_order = Service(
+            service=body['service'],
+            cottage=body['cottage'],
+            duration=body['duration']
+        )
+        db.session.add(new_order)
+        db.session.commit()
+        return { 'msg': 'order created', 'id': new_order.id}
 
 @app.route('/services', methods=['GET', 'POST'])
 def service():
