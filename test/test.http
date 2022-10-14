@@ -15,6 +15,20 @@ Content-Type: application/json
     "cottage": "cottage",
     "duration": 60
 }
+
+###
+PATCH {{baseUrl}}/orders/2
+Content-Type: application/json
+
+{ 
+    "service": "cleaning",
+    "cottage": "building",
+    "duration": 2
+}
+
+###
+DELETE {{baseUrl}}/orders/3
+
 ###
 GET {{baseUrl}}/services
 ###
@@ -26,3 +40,16 @@ Content-Type: application/json
     "cottage": "cottage",
     "hourly_cost": 50
 }
+
+###
+PATCH {{baseUrl}}/services/7
+Content-Type: application/json
+
+{ 
+    "name": "value 2",
+    "cottage": "house",
+    "hourly_cost": 100
+}
+
+###
+DELETE {{baseUrl}}/services/10

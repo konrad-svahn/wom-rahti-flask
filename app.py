@@ -32,7 +32,7 @@ class Service(db.Model):
 with app.app_context():
     db.create_all()
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET'])
 def index():
     if request.method == 'GET':
         return {
@@ -41,7 +41,24 @@ def index():
             'env': os.environ.get('ENV_VAR', 'Cannot find variable ENV_VAR')
         }
 
-@app.route('/orders', methods=['GET', 'POST', 'PATCH', 'DELETE'])
+@app.route("/orders/<int:id>", methods=['PATCH', 'DELETE'])
+def orderid(id):
+    orde = db.get_or_404(Order, id)
+    
+    if request.method == "PATCH":
+        body = request.get_json()
+        orde.service=body['service']
+        orde.cottage=body['cottage']
+        orde.duration=body['duration']
+        db.session.commit()
+        return { 'msg': 'order modified', 'id': id}
+    
+    if request.method == "DELETE":
+        db.session.delete(orde)
+        db.session.commit()
+        return { 'msg': 'order deleted', 'id': id}
+
+@app.route('/orders', methods=['GET', 'POST'])
 def order():        
     if request.method == 'GET':
         orders = []
@@ -56,7 +73,7 @@ def order():
         
     if request.method == 'POST':
         body = request.get_json()
-        new_order = Service(
+        new_order = Order(
             service=body['service'],
             cottage=body['cottage'],
             duration=body['duration']
@@ -64,6 +81,8 @@ def order():
         db.session.add(new_order)
         db.session.commit()
         return { 'msg': 'order created', 'id': new_order.id}
+    
+
 
 @app.route('/services', methods=['GET', 'POST'])
 def service():
@@ -92,13 +111,19 @@ def service():
 @app.route("/services/<int:id>", methods=['PATCH', 'DELETE'])
 def serviceid(id):
     serv = db.get_or_404(Service, id)
-
+    
+    if request.method == "PATCH":
+        body = request.get_json()
+        serv.name=body['name']
+        serv.cottage=body['cottage']
+        serv.hourly_cost=body['hourly_cost']
+        db.session.commit()
+        return { 'msg': 'service modified', 'id': id}
+    
     if request.method == "DELETE":
         db.session.delete(serv)
         db.session.commit()
-        return { 'msg': 'service created', 'id': serv}
-
-    
+        return { 'msg': 'service deleted', 'id': id}
 
 if __name__ == '__main__':
     app.run(debug=True, port=8080, host='0.0.0.0')
