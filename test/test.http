@@ -4,9 +4,16 @@
 
 @trueURL=https://p2-svahnkon.rahtiapp.fi/
 
+@AUTH=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MzM3NTYwZWExZWI4NWQ0YTkwZGYxODIiLCJlbWFpbCI6ImhvcnNlLnJlYWxtYW5AVi5vcnNlIiwiaWF0IjoxNjY1NzUwNjk5LCJleHAiOjE2NjU4MzcwOTl9.D2QVvJcbUTH2TKxsCiYWyQ_kScsWVnHmJDQlLnUOR7I
+
+###
+GET {{baseUrl}}/cabins
+Authorization: Bearer {{AUTH}}
+
 ###
 GET {{baseUrl}}/orders
 ###
+
 POST {{baseUrl}}/orders
 Content-Type: application/json
 

@@ -1,5 +1,6 @@
 from crypt import methods
 import os
+import requests
 from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
@@ -40,6 +41,12 @@ def index():
             'msg': 'webhoks work',
             'env': os.environ.get('ENV_VAR', 'Cannot find variable ENV_VAR')
         }
+        
+@app.route('/cabins', methods=['GET'])
+def cabin():
+    if request.method == 'GET':
+        req = requests.get('https://wom-konrad-p1.azurewebsites.net/cottages/owned', headers = {'Authorization': str(request.headers.get('Authorization'))})
+        return str(req.content)
 
 @app.route("/orders/<int:id>", methods=['PATCH', 'DELETE'])
 def orderid(id):
