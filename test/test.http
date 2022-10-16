@@ -11,10 +11,10 @@ GET {{trueUrl}}/cabins
 Authorization: Bearer {{AUTH}}
 
 ###
-GET {{baseUrl}}/orders
+GET {{trueUrl}}/orders
 ###
 
-POST {{baseUrl}}/orders
+POST {{trueUrl}}/orders
 Content-Type: application/json
 
 { 
