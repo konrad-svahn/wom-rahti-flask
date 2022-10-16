@@ -7,7 +7,7 @@
 @AUTH = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MzM3NTYwZWExZWI4NWQ0YTkwZGYxODIiLCJlbWFpbCI6ImhvcnNlLnJlYWxtYW5AVi5vcnNlIiwiaWF0IjoxNjY1OTE3MDcxLCJleHAiOjE2NjYwMDM0NzF9.2smsBoDMrKvOnRZ3a2OImydtjNGBNOmitkBwFgmwaBw
 
 ###
-GET {{trueUrl}}/cabins
+GET {{baseUrl}}/cabins
 Authorization: Bearer {{AUTH}}
 
 ###

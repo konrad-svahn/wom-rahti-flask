@@ -46,7 +46,7 @@ def index():
 def cabin():
     if request.method == 'GET':
         req = requests.get('https://wom-konrad-p1.azurewebsites.net/cottages/owned', headers = {'Authorization': str(request.headers.get('Authorization'))})
-        return str(req.content)
+        return req.content
 
 @app.route("/orders/<int:id>", methods=['PATCH', 'DELETE'])
 def orderid(id):
