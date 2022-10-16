@@ -100,7 +100,7 @@ def service():
                 'id': serv.id,
                 'name': serv.name,
                 'cottage': serv.cottage,
-                'hourly cost': serv.hourly_cost
+                'hourly-cost': serv.hourly_cost
             })
         return services
 

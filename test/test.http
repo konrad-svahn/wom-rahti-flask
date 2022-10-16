@@ -7,7 +7,7 @@
 @AUTH = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MzM3NTYwZWExZWI4NWQ0YTkwZGYxODIiLCJlbWFpbCI6ImhvcnNlLnJlYWxtYW5AVi5vcnNlIiwiaWF0IjoxNjY1OTE3MDcxLCJleHAiOjE2NjYwMDM0NzF9.2smsBoDMrKvOnRZ3a2OImydtjNGBNOmitkBwFgmwaBw
 
 ###
-GET {{baseUrl}}/cabins
+GET {{trueUrl}}/cabins
 Authorization: Bearer {{AUTH}}
 
 ###
@@ -24,7 +24,7 @@ Content-Type: application/json
 }
 
 ###
-PATCH {{baseUrl}}/orders/2
+PATCH {{trueUrl}}/orders/2
 Content-Type: application/json
 
 { 
@@ -34,29 +34,29 @@ Content-Type: application/json
 }
 
 ###
-DELETE {{baseUrl}}/orders/3
+DELETE {{trueUrl}}/orders/3
 
 ###
-GET {{baseUrl}}/services
+GET {{trueUrl}}/services
 ###
-POST {{baseUrl}}/services
+POST {{trueUrl}}/services
 Content-Type: application/json
 
 { 
-    "name": "Test value",
-    "cottage": "cottage",
-    "hourly_cost": 50
+    "name": "clean cottage",
+    "cottage": "633762f8d22189b950cf23db",
+    "hourly_cost": 10
 }
 
 ###
-PATCH {{baseUrl}}/services/7
+PATCH {{trueUrl}}/services/1
 Content-Type: application/json
 
 { 
-    "name": "value 2",
-    "cottage": "house",
-    "hourly_cost": 100
+    "name": "clean cottage",
+    "cottage": "633887595c971c520456d6c6",
+    "hourly_cost": 10
 }
 
 ###
-DELETE {{baseUrl}}/services/10
+DELETE {{trueUrl}}/services/10
