@@ -18,23 +18,23 @@ POST {{trueUrl}}/orders
 Content-Type: application/json
 
 { 
-    "service": "Test value",
-    "cottage": "cottage",
-    "duration": 60
+    "service": "12",
+    "cottage": "633762f8d22189b950cf23db",
+    "duration": 80
 }
 
 ###
-PATCH {{trueUrl}}/orders/2
+PATCH {{trueUrl}}/orders/6
 Content-Type: application/json
 
 { 
-    "service": "cleaning",
-    "cottage": "building",
-    "duration": 2
+    "service": "7",
+    "cottage": "633887595c971c520456d6c6",
+    "duration": 1665668640000
 }
 
 ###
-DELETE {{trueUrl}}/orders/3
+DELETE {{trueUrl}}/orders/5
 
 ###
 GET {{trueUrl}}/services

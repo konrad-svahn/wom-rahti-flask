@@ -18,7 +18,7 @@ class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     service = db.Column(db.String(120), nullable=False)
     cottage = db.Column(db.String(120), nullable=False)
-    duration = db.Column(db.Integer)
+    duration = db.Column(db.DateTime)
     created_at = db.Column(db.DateTime, default=db.func.now())
     updated_at = db.Column(db.DateTime, default=db.func.now(), onupdate=db.func.now())
 
